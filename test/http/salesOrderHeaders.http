@@ -1,9 +1,7 @@
 @SERVICE_URL=http://localhost:4004/odata/v4/main
 
-
 GET {{SERVICE_URL}}/SaledOrderHeaders
 Content-Type: application/json
-
 
 ###
 POST {{SERVICE_URL}}/SaledOrderHeaders
@@ -12,7 +10,6 @@ Content-Type: application/json
 {
     "id": "1234"
 }
-
 
 ###
 DELETE {{SERVICE_URL}}/SaledOrderHeaders(id='1234')
