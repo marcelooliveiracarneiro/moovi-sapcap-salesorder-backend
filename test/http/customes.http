@@ -1,0 +1,34 @@
+@SERVICE_URL=http://localhost:4004/odata/v4/main
+@ID=fe035692-97f2-47d7-8f19-85ad85e525c1
+
+GET {{SERVICE_URL}}/Customers
+Content-Type: application/json
+
+###
+POST {{SERVICE_URL}}/Customers
+Content-Type: application/json
+
+{
+    "firstName": "Marcelo",
+    "lastName": "Carneiro",
+    "email": "marcelo.oliveira.carneiro@gmail.com"
+}
+
+###
+GET {{SERVICE_URL}}/Customers(id={{ID}})
+Content-Type: application/json
+
+
+###
+PUT {{SERVICE_URL}}/Customers(id={{ID}})
+Content-Type: application/json
+
+{
+    "firstName": "Marcelo",
+    "lastName": "Carneiro",
+    "email": "marcelo.oliveira.carneiro@gmail.com"
+}
+
+###
+DELETE {{SERVICE_URL}}/Customers(id={{ID}})
+Content-Type: application/json

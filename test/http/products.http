@@ -1,0 +1,32 @@
+@SERVICE_URL=http://localhost:4004/odata/v4/main
+@ID=f0ca9b92-17a3-475b-b567-71bbd363d1d1
+
+GET {{SERVICE_URL}}/Products
+Content-Type: application/json
+
+###
+POST {{SERVICE_URL}}/Products
+Content-Type: application/json
+
+{
+    "name": "Produto",
+    "price": 123456.89
+}
+
+###
+GET {{SERVICE_URL}}/Products(id={{ID}})
+Content-Type: application/json
+
+###
+PUT {{SERVICE_URL}}/Products(id={{ID}})
+Content-Type: application/json
+
+{
+    "name": "Produto Alterado",
+    "price": 123456.89
+}
+
+
+###
+DELETE {{SERVICE_URL}}/Products(id={{ID}})
+Content-Type: application/json
