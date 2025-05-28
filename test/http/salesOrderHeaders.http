@@ -1,4 +1,7 @@
 @SERVICE_URL=http://localhost:4004/odata/v4/main
+@ID=781c9afa-098e-4131-98c4-72c0a72e24ad
+@CUSTOMER_ID=fe035692-97f2-47d7-8f19-85ad85e525c1
+@PRODUCT_ID=f0ca9b92-17a3-475b-b567-71bbd363d1d1
 
 GET {{SERVICE_URL}}/SaledOrderHeaders
 Content-Type: application/json
@@ -8,17 +11,46 @@ POST {{SERVICE_URL}}/SaledOrderHeaders
 Content-Type: application/json
 
 {
-    "id": "1234"
+ "id": "{{ID}}",
+  "customer_id": "{{CUSTOMER_ID}}",
+  "items" : [
+    {
+        "header_id": "{{ID}}",
+        "product_id": "{{PRODUCT_ID}}",
+        "quantity": 10,
+        "price": 1.99
+    }
+  ]
 }
 
 ###
-DELETE {{SERVICE_URL}}/SaledOrderHeaders(id='1234')
+POST {{SERVICE_URL}}/SaledOrderHeaders
 Content-Type: application/json
 
-{}
+{
+
+}
+
+
 
 ###
-DELETE {{SERVICE_URL}}/SaledOrderHeaders(id='1234')
+GET {{SERVICE_URL}}/SaledOrderHeaders(id={{ID}})
 Content-Type: application/json
 
-{}
+
+###
+GET {{SERVICE_URL}}/SaledOrderHeaders(id={{ID}})?$expand=items
+Content-Type: application/json
+
+
+###
+PUT {{SERVICE_URL}}/SaledOrderHeaders(id={{ID}})
+Content-Type: application/json
+
+{
+
+}
+
+###
+DELETE {{SERVICE_URL}}/SaledOrderHeaders(id={{ID}})
+Content-Type: application/json
