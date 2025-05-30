@@ -81,7 +81,12 @@ GET {{SERVICE_URL}}/SaledOrderHeaders/$count?$expand=customer($select=firstName,
 Content-Type: application/json
 
 ###
-# Skip/Top
+# Skip - Pular
+# Top  - Quantidade
 GET {{SERVICE_URL}}/SaledOrderHeaders?$skip=5&$top=2
 Content-Type: application/json
 
+###
+# Search
+GET {{SERVICE_URL}}/SaledOrderHeaders?$search=Marcelo
+Content-Type: application/json

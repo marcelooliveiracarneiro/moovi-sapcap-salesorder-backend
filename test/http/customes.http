@@ -32,3 +32,9 @@ Content-Type: application/json
 ###
 DELETE {{SERVICE_URL}}/Customers(id={{ID}})
 Content-Type: application/json
+
+
+###
+# Search
+GET {{SERVICE_URL}}/Customers?$search=Marcelo
+Content-Type: application/json
