@@ -54,3 +54,14 @@ Content-Type: application/json
 ###
 DELETE {{SERVICE_URL}}/SaledOrderHeaders(id={{ID}})
 Content-Type: application/json
+
+
+###
+# Filter
+GET {{SERVICE_URL}}/SaledOrderHeaders?$filter=customer/id eq fe035692-97f2-47d7-8f19-85ad85e525c1
+Content-Type: application/json
+
+###
+# Expand
+GET {{SERVICE_URL}}/SaledOrderHeaders?$expand=customer(),items($expand=product;$filter=product/price gt 0)&$filter=customer/id eq fe035692-97f2-47d7-8f19-85ad85e525c1
+Content-Type: application/json
