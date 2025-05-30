@@ -65,3 +65,7 @@ Content-Type: application/json
 # Expand
 GET {{SERVICE_URL}}/SaledOrderHeaders?$expand=customer(),items($expand=product;$filter=product/price gt 0)&$filter=customer/id eq fe035692-97f2-47d7-8f19-85ad85e525c1
 Content-Type: application/json
+
+###
+GET {{SERVICE_URL}}/SaledOrderHeaders?$expand=customer($filter=id eq fe035692-97f2-47d7-8f19-85ad85e525c1),items($expand=product;$filter=quantity gt 5 and product/price gt 0)
+Content-Type: application/json
