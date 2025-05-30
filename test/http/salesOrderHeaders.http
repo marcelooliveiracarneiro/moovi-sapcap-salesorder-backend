@@ -67,5 +67,21 @@ GET {{SERVICE_URL}}/SaledOrderHeaders?$expand=customer(),items($expand=product;$
 Content-Type: application/json
 
 ###
+# Select
 GET {{SERVICE_URL}}/SaledOrderHeaders?$expand=customer($select=firstName,lastName),items($expand=product($select=name);$filter=product/price gt 0)&$select=totalAmount
 Content-Type: application/json
+
+###
+# Count
+GET {{SERVICE_URL}}/SaledOrderHeaders/$count
+Content-Type: application/json
+
+###
+GET {{SERVICE_URL}}/SaledOrderHeaders/$count?$expand=customer($select=firstName,lastName),items($expand=product($select=name);$filter=product/price gt 0)&$select=totalAmount
+Content-Type: application/json
+
+###
+# Skip/Top
+GET {{SERVICE_URL}}/SaledOrderHeaders?$skip=5&$top=2
+Content-Type: application/json
+
