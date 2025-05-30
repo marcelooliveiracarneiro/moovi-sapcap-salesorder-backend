@@ -38,3 +38,8 @@ Content-Type: application/json
 # Search
 GET {{SERVICE_URL}}/Customers?$search=Marcelo
 Content-Type: application/json
+
+###
+# OrderBy
+GET {{SERVICE_URL}}/Customers?$orderby=lastName,firstName&$select=lastName,firstName
+Content-Type: application/json
