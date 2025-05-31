@@ -32,15 +32,6 @@ export default (service: Service) => {
         const productsIds = params.items.map((item: SaledOrderItem) => item.product_id);
         const productsQuery = SELECT.from('sales.Products').where({ id: productsIds });
         const products: Products = await cds.run(productsQuery);
-/*         
-        const dbProducts = products.map((product: Product) => product.id);
-        if (!productsIds.every((productId: any) => dbProducts.includes(productId))) {
-            return request.reject( 404, 'Produto não encontrado');
-        }
-        if (products.some(((product: Product) => product.stock === 0))) {
-            return request.reject( 400, 'Produto sem estoue disponível');
-        }
- */        
         const items: SaledOrderItems = params.items;
         for (const item of items) {
             const dbProduct = products.find(product => product.id === item.product_id);
@@ -55,9 +46,12 @@ export default (service: Service) => {
         items.forEach(item => {
             totalAmount += ((item.price as number) * (item.quantity as number));
         });
+        if (totalAmount > 30000) {
+            totalAmount = totalAmount - (totalAmount * (10/100));
+        }
         request.data.totalAmount = totalAmount;
     });
-    service.after('CREATE', 'SaledOrderHeaders', async (results: SaledOrderHeaders) => {
+    service.after('CREATE', 'SaledOrderHeaders', async (results: SaledOrderHeaders, request: Request) => {
         const headersAsArray = Array.isArray(results) ? results : [results] as SaledOrderHeaders;
         for (const header of headersAsArray) {
             const items = header.items as SaledOrderItems;
@@ -73,6 +67,15 @@ export default (service: Service) => {
                productFound.stock = (productFound.stock as number) - productData.quantity;
                await cds.update('sales.Products').where({ id: productFound.id }).with({ stock: productFound.stock });
             }
+
+            const headersAsString =JSON.stringify(header);
+            const userAsString = JSON.stringify(request.user);
+            const log = [{
+                header_id: header.id,
+                userData: userAsString,
+                orderData: headersAsArray
+            }];
+            await cds.create('sales.SaledOrderLogs').entries(log);
     
         }
     })
