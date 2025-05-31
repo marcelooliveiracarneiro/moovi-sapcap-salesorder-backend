@@ -2,6 +2,13 @@ import cds, { Request, Service } from '@sap/cds';
 import { Customers, Product, Products, SaledOrderHeader, SaledOrderHeaders, SaledOrderItem, SaledOrderItems } from '@models/sales'
 
 export default (service: Service) => {
+    service.before('READ', '*', (request: Request) => {
+        if ((!request.user.is('admin')) 
+        && (!request.user.is('read_only_user'))) {
+            return request.reject(403,'Não Autorizado');
+        }
+    });
+
     service.after('READ','Customers', (results: Customers) => {
         results.forEach( customer => {
             if (!customer.email?.includes('@')) {

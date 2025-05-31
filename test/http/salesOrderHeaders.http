@@ -3,12 +3,16 @@
 @CUSTOMER_ID=72935130-d057-452c-93c8-31622aaede7e
 @PRODUCT_ID=f0ca9b92-17a3-475b-b567-71bbd363d1d1
 
+@USER_AUTH=Basic moc:moc@123
+
 GET {{SERVICE_URL}}/SaledOrderHeaders
 Content-Type: application/json
+Authorization: {{USER_AUTH}}
 
 ###
 POST {{SERVICE_URL}}/SaledOrderHeaders
 Content-Type: application/json
+Authorization: {{USER_AUTH}}
 
 {
  #"id": "{{ID}}",
@@ -32,6 +36,7 @@ Content-Type: application/json
 ###
 POST {{SERVICE_URL}}/SaledOrderHeaders
 Content-Type: application/json
+Authorization: {{USER_AUTH}}
 
 {
  "id": "{{ID}}",
@@ -43,6 +48,7 @@ Content-Type: application/json
 ###
 POST {{SERVICE_URL}}/SaledOrderHeaders
 Content-Type: application/json
+Authorization: {{USER_AUTH}}
 
 {
 
@@ -53,16 +59,17 @@ Content-Type: application/json
 ###
 GET {{SERVICE_URL}}/SaledOrderHeaders(id={{ID}})
 Content-Type: application/json
-
+Authorization: {{USER_AUTH}}
 
 ###
 GET {{SERVICE_URL}}/SaledOrderHeaders(id={{ID}})?$expand=items
 Content-Type: application/json
-
+Authorization: {{USER_AUTH}}
 
 ###
 PUT {{SERVICE_URL}}/SaledOrderHeaders(id={{ID}})
 Content-Type: application/json
+Authorization: {{USER_AUTH}}
 
 {
 
@@ -71,39 +78,46 @@ Content-Type: application/json
 ###
 DELETE {{SERVICE_URL}}/SaledOrderHeaders(id={{ID}})
 Content-Type: application/json
-
+Authorization: {{USER_AUTH}}
 
 ###
 # Filter
 GET {{SERVICE_URL}}/SaledOrderHeaders?$filter=customer/id eq fe035692-97f2-47d7-8f19-85ad85e525c1
 Content-Type: application/json
+Authorization: {{USER_AUTH}}
 
 ###
 # Expand
 GET {{SERVICE_URL}}/SaledOrderHeaders?$expand=customer(),items($expand=product;$filter=product/price gt 0)
 Content-Type: application/json
+Authorization: {{USER_AUTH}}
 
 ###
 # Select
 GET {{SERVICE_URL}}/SaledOrderHeaders?$expand=customer($select=firstName,lastName),items($expand=product($select=name);$filter=product/price gt 0)&$select=totalAmount
 Content-Type: application/json
+Authorization: {{USER_AUTH}}
 
 ###
 # Count
 GET {{SERVICE_URL}}/SaledOrderHeaders/$count
 Content-Type: application/json
+Authorization: {{USER_AUTH}}
 
 ###
 GET {{SERVICE_URL}}/SaledOrderHeaders/$count?$expand=customer($select=firstName,lastName),items($expand=product($select=name);$filter=product/price gt 0)&$select=totalAmount
 Content-Type: application/json
+Authorization: {{USER_AUTH}}
 
 ###
 # Skip - Pular
 # Top  - Quantidade
 GET {{SERVICE_URL}}/SaledOrderHeaders?$skip=5&$top=2
 Content-Type: application/json
+Authorization: {{USER_AUTH}}
 
 ###
 # Search
 GET {{SERVICE_URL}}/SaledOrderHeaders?$search=Marcelo
 Content-Type: application/json
+Authorization: {{USER_AUTH}}

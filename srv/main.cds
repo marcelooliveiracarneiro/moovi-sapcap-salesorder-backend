@@ -3,6 +3,17 @@ using {sales} from '../db/schema';
 @requires: 'authenticated-user'
 service MainService {
     entity SaledOrderHeaders as projection on sales.SaledOrderHeaders;
+/*     @restrict: [
+        {
+            grant: 'READ',
+            to: 'read_only_user'
+        },
+        {
+            grant: ['READ','WRITE'],
+            to: 'admin'
+        }
+    ]
+ */    
     entity Customers         as projection on sales.Customers;
     entity Products          as projection on sales.Products;
 }
