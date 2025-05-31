@@ -13,7 +13,8 @@
                     "moc": {
                         "password": "moc@123",
                         "roles": [
-                            "admin"
+                            "admin",
+                            "teste"
                         ],
                         "attr": {
                             "id": 1,

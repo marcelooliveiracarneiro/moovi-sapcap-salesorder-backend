@@ -3,8 +3,8 @@ import { Customers, Product, Products, SaledOrderHeader, SaledOrderHeaders, Sale
 
 export default (service: Service) => {
     service.before('READ', '*', (request: Request) => {
-        if ((!request.user.is('admin')) 
-        && (!request.user.is('read_only_user'))) {
+        const inRole = ["admin","read_only_user"].find( role => request.user.is(role) );
+        if (!inRole) {
             return request.reject(403,'Não Autorizado');
         }
     });
