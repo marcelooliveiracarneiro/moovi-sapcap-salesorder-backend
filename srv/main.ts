@@ -1,5 +1,5 @@
 import cds, { Request, Service } from '@sap/cds';
-import { Customers, Product, Products, SaledOrderItem, SaledOrderItems } from '@models/sales'
+import { Customers, Product, Products, SaledOrderHeader, SaledOrderHeaders, SaledOrderItem, SaledOrderItems } from '@models/sales'
 
 export default (service: Service) => {
     service.after('READ','Customers', (results: Customers) => {
@@ -25,7 +25,8 @@ export default (service: Service) => {
         const productsIds = params.items.map((item: SaledOrderItem) => item.product_id);
         const productsQuery = SELECT.from('sales.Products').where({ id: productsIds });
         const products: Products = await cds.run(productsQuery);
-/*         const dbProducts = products.map((product: Product) => product.id);
+/*         
+        const dbProducts = products.map((product: Product) => product.id);
         if (!productsIds.every((productId: any) => dbProducts.includes(productId))) {
             return request.reject( 404, 'Produto não encontrado');
         }
@@ -45,5 +46,24 @@ export default (service: Service) => {
         }
 
     });
+    service.after('CREATE', 'SaledOrderHeaders', async (results: SaledOrderHeaders) => {
+        const headersAsArray = Array.isArray(results) ? results : [results] as SaledOrderHeaders;
+        for (const header of headersAsArray) {
+            const items = header.items as SaledOrderItems;
+            const productsData = items.map(item => ({
+                id: item.product_id,
+                quantity: item.quantity as number
+            }));
+            const productsIds = productsData.map((productData) => productData.id);
+            const productsQuery = SELECT.from('sales.Products').where({ id: productsIds });
+            const products: Products = await cds.run(productsQuery);
+            for (const productData of productsData) {
+               const productFound = products.find(product => product.id == productData.id) as Product;  
+               productFound.stock = (productFound.stock as number) - productData.quantity;
+               await cds.update('sales.Products').where({ id: productFound.id }).with({ stock: productFound.stock });
+            }
+    
+        }
+    })
 
 }
