@@ -1,6 +1,6 @@
 @SERVICE_URL=http://localhost:4004/odata/v4/main
 @ID=781c9afa-098e-4131-98c4-72c0a72e24ad
-@CUSTOMER_ID=fe035692-97f2-47d7-8f19-85ad85e525c1
+@CUSTOMER_ID=72935130-d057-452c-93c8-31622aaede7e
 @PRODUCT_ID=f0ca9b92-17a3-475b-b567-71bbd363d1d1
 
 GET {{SERVICE_URL}}/SaledOrderHeaders
@@ -11,17 +11,34 @@ POST {{SERVICE_URL}}/SaledOrderHeaders
 Content-Type: application/json
 
 {
- "id": "{{ID}}",
+ #"id": "{{ID}}",
   "customer_id": "{{CUSTOMER_ID}}",
   "items" : [
     {
         "header_id": "{{ID}}",
-        "product_id": "{{PRODUCT_ID}}",
+        "product_id": "14525243-defe-442a-a81d-ac821d98a418",
         "quantity": 10,
         "price": 1.99
+    },
+    {
+        "header_id": "{{ID}}",
+        "product_id": "12903918-860d-43de-a89d-bc2980471fdd",
+        "quantity": 10,
+        "price": 2.99
     }
   ]
 }
+
+###
+POST {{SERVICE_URL}}/SaledOrderHeaders
+Content-Type: application/json
+
+{
+ "id": "{{ID}}",
+  "customer_id": "{{CUSTOMER_ID}}",
+  "items" : [  ]
+}
+
 
 ###
 POST {{SERVICE_URL}}/SaledOrderHeaders
