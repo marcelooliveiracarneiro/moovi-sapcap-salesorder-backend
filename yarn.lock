@@ -13,16 +13,16 @@
   integrity sha512-E0uVAXmYz8X7O4Pf/ZveECi+qPUl2X/o4BQRlGNstxhvUfrNHmADZR1N3RJvKxO5wOGfaZuJtY+fg7diU9tnAw==
 
 "@cap-js/db-service@^1.20.0":
-  version "1.20.1"
-  resolved "https://registry.yarnpkg.com/@cap-js/db-service/-/db-service-1.20.1.tgz#2279cf6eb4638f6668e384c9bb2e5c29afa4f3ba"
-  integrity sha512-wyPkIPXmumd0W1fVrCtfToK0lqcFWPGr35rzcpvG447nCY7geA2S3vxANWJB7KPUH2kXeg76gDkzzlyKTRK8BQ==
+  version "1.20.2"
+  resolved "https://registry.yarnpkg.com/@cap-js/db-service/-/db-service-1.20.2.tgz#50a8641966759f1dd0c95db9302a15695e3c4dbf"
+  integrity sha512-3mNcfX+eY1xOZMppaCf+Yy3F9X7OBmhCCrUwLXzrxD6vCr5MQQC71YGeaNfDvJNH/SWs3qTriV3Fi4DhqXLNmw==
   dependencies:
     generic-pool "^3.9.0"
 
 "@cap-js/sqlite@^1":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@cap-js/sqlite/-/sqlite-1.11.0.tgz#479aa8f8948d1d0c68d18ba1002dac9e18110cbd"
-  integrity sha512-e81B7pQ21tF5aQt3C/J47OhwivdsYGv5dBdaTHUHVNIYq/pLBR+cKKEw6oZ8utfNOZZcQUdoPlQ+F1vZOuo73A==
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/@cap-js/sqlite/-/sqlite-1.11.1.tgz#bb7da991e32a374d1f448d4155953e67c1308c88"
+  integrity sha512-vM5aggdzMvhUyfLo5Z/yqwro7jzXI5JawRRPaf7/LSaWedP9Y20nSvE0o+Frl1gtzGgBOx0MtESec3daEI3xFw==
   dependencies:
     "@cap-js/db-service" "^1.20.0"
     better-sqlite3 "^11.0.0"
