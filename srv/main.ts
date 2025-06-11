@@ -78,6 +78,6 @@ export default (service: Service) => {
             await cds.create('sales.SaledOrderLogs').entries(log);
     
         }
-    })
+    });
 
 }

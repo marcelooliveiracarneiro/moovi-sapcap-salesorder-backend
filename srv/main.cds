@@ -1,4 +1,5 @@
 using {sales} from '../db/schema';
+using from '../annotations/main';
 
 @requires: 'authenticated-user'
 service MainService {
@@ -14,6 +15,7 @@ service MainService {
         }
     ]
  */    
+    entity SaledOrderStatuses as projection on sales.SaledOrderStatuses;
     entity Customers         as projection on sales.Customers;
     entity Products          as projection on sales.Products;
     entity SaledOrderLogs    as projection on sales.SaledOrderLogs;
