@@ -1,8 +1,8 @@
-import { SalesOrderItemModel, SalesOrderItemProps } from "./sales-order-item";
+import { SalesOrderItemModel } from './sales-order-item';
 
 export type SalesOrderHeaderProps = {
-    id: String;
-    customerId: String;
+    id: string;
+    customerId: string;
     totalAmount: number;
     items: SalesOrderItemModel[];
 }
@@ -11,7 +11,7 @@ type SalesOrderHeaderPropsOmit = Omit<SalesOrderHeaderProps, 'id' | 'totalAmount
 
 type CreationPayload = {
     customer_id: SalesOrderHeaderProps['customerId'];
-    items?: any[];
+    items?: SalesOrderItemModel[];
 }
 
 type CreationPayloadValidationResult = {
@@ -127,7 +127,7 @@ export class SalesOrderHeaderModel {
         }));
     }
 
-    public toStringtyObject(): String {
+    public toStringtyObject(): string {
         return JSON.stringify(this.props);
     }
 }

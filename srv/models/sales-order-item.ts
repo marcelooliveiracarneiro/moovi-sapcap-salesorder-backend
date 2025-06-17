@@ -1,8 +1,8 @@
-import { ProductModel } from "./product";
+import { ProductModel } from './product';
 
 export type SalesOrderItemProps = {
-    id: String;
-    productId: String;
+    id: string;
+    productId: string;
     quantity: number;
     price: number;
     products: ProductModel[];

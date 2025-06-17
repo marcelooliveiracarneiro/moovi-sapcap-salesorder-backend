@@ -1,6 +1,6 @@
-import { Customers } from "@models/sales";
-import { CustomerService } from "./protocols"
-import { CustomerModel } from "srv/models/customer";
+import { Customers } from '@models/sales';
+import { CustomerService } from './protocols';
+import { CustomerModel } from 'srv/models/customer';
 
 export class CustomerServiceImpl implements CustomerService {
     afterRead(CustomerList: Customers): Customers {
@@ -12,7 +12,7 @@ export class CustomerServiceImpl implements CustomerService {
                 email: c.email as string
             });
             return customer
-                    .setDefaultEmailDomain();
+                .setDefaultEmailDomain();
         });
 
         return customers;

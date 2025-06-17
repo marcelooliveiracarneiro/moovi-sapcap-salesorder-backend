@@ -1,6 +1,6 @@
 export type ProductProps = {
-    id: String;
-    name: String;
+    id: string;
+    name: string;
     price: number;
     stock: number;
 }
@@ -23,7 +23,7 @@ export class ProductModel {
             name: this.name,
             price: this.price,
             stock: this.stock,
-        }
+        };
     }
 
     public get id() {
@@ -45,8 +45,8 @@ export class ProductModel {
     public sell(amount: number): SellValidationResult {
         if (this.stock < amount) {
             return { hasError: true, error: new Error('Quantidade em estoque, insuficiente.') };
-         }
-         return { hasError: false };
+        }
+        return { hasError: false };
     }
     
 }

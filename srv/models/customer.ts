@@ -1,8 +1,8 @@
 export type CustomerProps = {
-    id: String;
-    firstName: String;
-    lastName: String;
-    email: String;
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
 }
 
 export class CustomerModel {
@@ -18,7 +18,7 @@ export class CustomerModel {
             firstName: this.firstName,
             lastName: this.lastName,
             email: this.email,
-        }
+        };
     }
 
     public get id() {

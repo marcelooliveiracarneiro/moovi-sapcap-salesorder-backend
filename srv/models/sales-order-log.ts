@@ -1,13 +1,13 @@
 export type SalesOrderLogProps = {
-    id: String;
-    headerId: String;
-    orderData: String;
-    userData: String;
+    id: string;
+    headerId: string;
+    orderData: string;
+    userData: string;
 }
 
 type SalesOrderLogPropsOmit = Omit<SalesOrderLogProps, 'id'>;
 type SalesOrderLogDbProps = Omit<SalesOrderLogProps, 'headerId'> & {
-    header_id: String;
+    header_id: string;
 };
 
 export class SalesOrderLogModel {
@@ -30,7 +30,7 @@ export class SalesOrderLogModel {
             header_id: this.headerId,
             orderData: this.orderData,
             userData: this.userData
-        }
+        };
     }
 
     public get id() {

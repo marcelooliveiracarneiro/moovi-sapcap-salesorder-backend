@@ -1,16 +1,15 @@
-import { Products, SaledOrderHeader, SaledOrderHeaders, SaledOrderItem } from "@models/sales";
-import { SalesOrderHeaderService, CreationSalesOrderResult } from "./protocols";
-import { ProductModel } from "../../models/product";
-import { SalesOrderHeaderModel } from "../../models/sales-order-header";
-import { SalesOrderItemModel } from "../../models/sales-order-item";
-import { ProductRepository } from "../../repositories/product/protocols";
-import { CustomerRepository } from "srv/repositories/customer/protocols";
-import { CustomerModel } from "srv/models/customer";
-import { SalesOrderLogModel } from "srv/models/sales-order-log";
-import { userInfo } from "os";
-import { SalesOrderLogRepository } from "srv/repositories/sales-order-log/protocols";
-import { User } from "@sap/cds";
-import { LoggedUserModel } from "srv/models/logged-user";
+import { SaledOrderHeader, SaledOrderHeaders, SaledOrderItem } from '@models/sales';
+import { SalesOrderHeaderService, CreationSalesOrderResult } from './protocols';
+import { ProductModel } from '../../models/product';
+import { SalesOrderHeaderModel } from '../../models/sales-order-header';
+import { SalesOrderItemModel } from '../../models/sales-order-item';
+import { ProductRepository } from '../../repositories/product/protocols';
+import { CustomerRepository } from 'srv/repositories/customer/protocols';
+import { CustomerModel } from 'srv/models/customer';
+import { SalesOrderLogModel } from 'srv/models/sales-order-log';
+import { SalesOrderLogRepository } from 'srv/repositories/sales-order-log/protocols';
+import { User } from '@sap/cds';
+import { LoggedUserModel } from 'srv/models/logged-user';
 
 export class SalesOrderHeaderServiceImpl implements SalesOrderHeaderService {
     constructor( 
@@ -39,7 +38,7 @@ export class SalesOrderHeaderServiceImpl implements SalesOrderHeaderService {
         return { 
             hasError: false,
             totalAmount: header.calculateDicount()
-         };
+        };
     }
 
     public async afterCreate(params: SaledOrderHeaders, loggedUser: User): Promise<void> {
@@ -80,16 +79,16 @@ export class SalesOrderHeaderServiceImpl implements SalesOrderHeaderService {
             customerId: params.customer_id as string,
             items
         });
-  }
+    }
 
-  private getExistingHeader(params: SaledOrderHeader, items: SalesOrderItemModel[]): SalesOrderHeaderModel {
-    return SalesOrderHeaderModel.with({
-        id: params.id as string,
-        customerId: params.customer_id as string,
-        totalAmount: params.totalAmount as number,
-        items
-    });
-}
+    private getExistingHeader(params: SaledOrderHeader, items: SalesOrderItemModel[]): SalesOrderHeaderModel {
+        return SalesOrderHeaderModel.with({
+            id: params.id as string,
+            customerId: params.customer_id as string,
+            totalAmount: params.totalAmount as number,
+            items
+        });
+    }
 
 
     private getCustomer(params: SaledOrderHeader) : Promise<CustomerModel | null> {

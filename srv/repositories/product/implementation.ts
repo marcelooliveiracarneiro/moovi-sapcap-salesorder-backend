@@ -1,11 +1,11 @@
 import cds from '@sap/cds';
 
-import { ProductProps, ProductModel } from "srv/models/product";
-import { ProductRepository } from "./protocols";
+import { ProductProps, ProductModel } from 'srv/models/product';
+import { ProductRepository } from './protocols';
 
 export class ProductRepositoryImpl implements ProductRepository {
 
-    public async findById(id: ProductProps["id"]): Promise<ProductModel | null> {
+    public async findById(id: ProductProps['id']): Promise<ProductModel | null> {
         const selectQuery = SELECT.from('sales.Products').where({ id: id });
         const selectResult = await cds.run(selectQuery);
         if (!selectResult) {
@@ -20,7 +20,7 @@ export class ProductRepositoryImpl implements ProductRepository {
         });
     }
 
-    public async findByIds(ids: ProductProps["id"][]): Promise<ProductModel[] | null> {
+    public async findByIds(ids: ProductProps['id'][]): Promise<ProductModel[] | null> {
         const selectQuery = SELECT.from('sales.Products').where({ id: ids });
         const selectResult = await cds.run(selectQuery);
         if (!selectResult) {

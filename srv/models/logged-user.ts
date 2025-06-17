@@ -26,7 +26,7 @@ export class LoggedUserModel {
         return this.props.attributes;
     }
 
-    public toStringtyObject(): String {
+    public toStringtyObject(): string {
         return JSON.stringify(this.props);
     }
 

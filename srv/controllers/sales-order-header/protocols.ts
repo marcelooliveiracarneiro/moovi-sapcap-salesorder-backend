@@ -1,6 +1,5 @@
-import { SaledOrderHeader, SaledOrderHeaders } from "@models/sales";
-import { User } from "@sap/cds";
-import { LoggedUserModel } from "srv/models/logged-user";
+import { SaledOrderHeader, SaledOrderHeaders } from '@models/sales';
+import { User } from '@sap/cds';
 
 export type CreationPayloadValidationResult = {
     hasError: boolean;
