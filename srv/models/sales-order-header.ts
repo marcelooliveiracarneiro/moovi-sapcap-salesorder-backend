@@ -30,6 +30,11 @@ export class SalesOrderHeaderModel {
         });
     }
 
+    public static with(props: SalesOrderHeaderProps): SalesOrderHeaderModel {
+        return new SalesOrderHeaderModel(props);
+    }
+
+
     public get id() {
         return this.props.id;
     }
@@ -113,5 +118,16 @@ export class SalesOrderHeaderModel {
             this.totalAmount = this.totalAmount - discount;
         }
         return this.totalAmount;
+    }
+
+    public getProductsData(): { id: string; quantity: number }[] {
+        return this.items.map(item => ({
+            id: item.productId as string,
+            quantity: item.quantity as number
+        }));
+    }
+
+    public toStringtyObject(): String {
+        return JSON.stringify(this.props);
     }
 }
