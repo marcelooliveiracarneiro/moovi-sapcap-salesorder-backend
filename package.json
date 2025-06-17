@@ -30,6 +30,7 @@
     "dev": "cds watch",
     "dev-debug": "DEBUG=db cds watch",
     "devtsx": "cds-tsx watch",
-    "devtsx-debug": "DEBUG=db cds-tsx watch"
+    "devtsx-debug": "DEBUG=db cds-tsx watch",
+    "lint": "eslint ./srv"
   }
 }
