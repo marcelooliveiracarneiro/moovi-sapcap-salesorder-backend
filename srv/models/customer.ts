@@ -1,16 +1,24 @@
-type CustomerProps = {
+export type CustomerProps = {
     id: String;
     firstName: String;
     lastName: String;
     email: String;
-
 }
 
 export class CustomerModel {
     constructor(private props: CustomerProps) { }
 
-    public static Create(props: CustomerProps): CustomerModel {
+    public static with(props: CustomerProps): CustomerModel {
         return new CustomerModel(props);
+    }
+
+    public toObject(): CustomerProps {
+        return {
+            id: this.id,
+            firstName: this.firstName,
+            lastName: this.lastName,
+            email: this.email,
+        }
     }
 
     public get id() {
@@ -24,15 +32,6 @@ export class CustomerModel {
     }
     public get email() {
         return this.props.email;
-    }
-
-    public toObject(): CustomerProps {
-        return {
-            id: this.id,
-            firstName: this.firstName,
-            lastName: this.lastName,
-            email: this.email,
-        }
     }
 
     public setDefaultEmailDomain(): CustomerModel {

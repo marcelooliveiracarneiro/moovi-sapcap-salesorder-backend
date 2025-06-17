@@ -5,7 +5,7 @@ import { CustomerModel } from "srv/models/customer";
 export class CustomerServiceImpl implements CustomerService {
     afterRead(CustomerList: Customers): Customers {
         const customers = CustomerList.map( c => {
-            const customer = CustomerModel.Create({
+            const customer = CustomerModel.with({
                 id: c.id as string,
                 firstName: c.firstName as string,
                 lastName: c.lastName as string,
