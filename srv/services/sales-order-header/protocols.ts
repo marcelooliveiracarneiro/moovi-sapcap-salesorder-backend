@@ -1,4 +1,5 @@
-import { SaledOrderHeader } from "@models/sales";
+import { SaledOrderHeader, SaledOrderHeaders } from "@models/sales";
+import { User } from "@sap/cds";
 
 export type CreationSalesOrderResult = {
     hasError: boolean;
@@ -8,4 +9,5 @@ export type CreationSalesOrderResult = {
 
 export interface SalesOrderHeaderService {
     beforeCreate(params: SaledOrderHeader): Promise<CreationSalesOrderResult>;
+    afterCreate(params: SaledOrderHeaders, loggedUser: User): Promise<void>;
 }

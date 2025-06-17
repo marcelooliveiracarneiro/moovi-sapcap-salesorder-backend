@@ -6,7 +6,7 @@ import { ProductRepository } from "./protocols";
 export class ProductRepositoryImpl implements ProductRepository {
 
     public async findById(id: ProductProps["id"]): Promise<ProductModel | null> {
-        const selectQuery = SELECT.from('sales.Products').where({ id: productsIds });
+        const selectQuery = SELECT.from('sales.Products').where({ id: id });
         const selectResult = await cds.run(selectQuery);
         if (!selectResult) {
             return null;
@@ -34,5 +34,10 @@ export class ProductRepositoryImpl implements ProductRepository {
             stock: selectResultItem.stock as number
         }));
     }
+
+    public async updateStock(product: ProductModel): Promise<void> {
+        await cds.update('sales.Products').where({ id: product.id }).with({ stock: product.stock });
+    }
+
 
 }
