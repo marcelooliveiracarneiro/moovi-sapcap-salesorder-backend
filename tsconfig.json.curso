@@ -15,5 +15,6 @@
     }
   },
   "include": ["srv"],
-  "exclude": ["node_modules","@cds-models"]
+  "exclude": ["node_modules","@cds-models"],
+  "skipLibCheck": true
 }
