@@ -6,8 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "express": "^4",
-    "module-alias": "^2.2.3"
+    "express": "^4"
   },
   "devDependencies": {
     "@cap-js/cds-typer": "^0.35.0",

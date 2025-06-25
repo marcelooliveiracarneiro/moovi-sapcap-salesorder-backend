@@ -1,5 +1,5 @@
-using {sales} from '../db/schema';
-using from '../annotations/main';
+using {sales} from '../../db/schema';
+using from '../../annotations/main';
 
 @requires: 'authenticated-user'
 service MainService {
