@@ -1,4 +1,4 @@
-using { MainService } from '../srv/main';
+using { MainService } from '../srv/routes/main';
 
 annotate MainService.SaledOrderHeaders with @(
     Capabilities: {
